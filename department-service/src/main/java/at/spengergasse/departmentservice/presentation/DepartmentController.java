@@ -18,7 +18,16 @@ public class DepartmentController {
 
     @PostMapping("/")
     public Department saveDepartment(@RequestBody Department department){
+        log.info("Inside saveDepartment method of DepartmentController");
         return deparmentService.saveDepartment(department);
     }
+
+    @GetMapping("/{id}")
+    public Department findDepartmentById(@PathVariable("id") Long departmentId){
+        log.info("Inside findDepartmentById method of DepartmentController");
+        return deparmentService.findDepartmentById(departmentId);
+    }
+
+
 
 }
