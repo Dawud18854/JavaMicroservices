@@ -1,5 +1,6 @@
 package at.spengergasse.userservice.VO;
 
+import at.spengergasse.userservice.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Department {
-    private Long departmentId;
-    private String departmentName;
-    private String departmentAddress;
-    private String departmentCode;
+public class ResponseTemplateVO {
+    private User user;
+    private Department department;
+
 }

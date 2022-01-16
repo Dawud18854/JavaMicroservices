@@ -1,4 +1,5 @@
 package at.spengergasse.userservice.presentation;
+import at.spengergasse.userservice.VO.ResponseTemplateVO;
 import at.spengergasse.userservice.domain.User;
 import at.spengergasse.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,11 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @GetMapping("/{id}")
+    public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId){
+        log.info("Inside ResponseTemplateVO of UserController");
+        return userService.getUserWithDepartment(userId);
+    }
 
 }
 
