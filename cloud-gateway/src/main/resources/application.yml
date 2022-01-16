@@ -12,9 +12,9 @@ spring:
           predicates:
             - Path=/users/**
         - id: DEPARTMENT-SERVICE
-            uri: lb://DEPARTMENT-SERVICE
-            predicates:
-              - Path=/departments/**
+          uri: lb://DEPARTMENT-SERVICE
+          predicates:
+            - Path=/departments/**
 
 eureka:
   client:
