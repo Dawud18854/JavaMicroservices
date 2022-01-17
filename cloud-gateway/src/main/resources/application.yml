@@ -27,6 +27,8 @@ spring:
                 fallbackuri: forward:/departmentServiceFallBack
 
 
+
+
 eureka:
   client:
     register-with-eureka: true
