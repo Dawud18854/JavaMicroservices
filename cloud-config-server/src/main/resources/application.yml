@@ -10,3 +10,8 @@ spring:
         git:
           uri: https://github.com/Dawud18854/config-server
           clone-on-start: true
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

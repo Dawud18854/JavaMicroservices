@@ -66,10 +66,6 @@ public class UserService {
                         new ServiceException("User with id "+id+" does not exist"));
     }
 
-    //public void partialUpdate(Long id, String firstName, String lastName){
-    //    userRepository.partialUpdate(id,firstName,lastName);
-    //}
-
     public void deleteUser(Long id) throws ServiceException {
         var user = findUserById(id);
         userRepository.deleteById(id);
