@@ -1,4 +1,5 @@
 package at.spengergasse.userservice.presentation;
+import at.spengergasse.userservice.service.DTO.UserDto;
 import at.spengergasse.userservice.service.VO.UserAssignmentVO;
 import at.spengergasse.userservice.service.VO.UserDepartmentAssignmentVO;
 import at.spengergasse.userservice.service.VO.UserDepartmentVO;
@@ -7,6 +8,8 @@ import at.spengergasse.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -30,6 +33,11 @@ public class UserController {
     @DeleteMapping({"/{id}"})
     public void deleteMusic(@PathVariable Long id){
         userService.deleteUser(id);
+    }
+
+    @GetMapping("/getAll")
+    public List<UserDto> getAllUsers(){
+        return  userService.getAllUsers();
     }
 
     @GetMapping("/withAssignmentDepartment/{id}")
