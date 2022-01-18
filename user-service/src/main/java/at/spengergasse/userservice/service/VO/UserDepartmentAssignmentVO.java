@@ -1,4 +1,4 @@
-package at.spengergasse.userservice.VO;
+package at.spengergasse.userservice.service.VO;
 
 import at.spengergasse.userservice.domain.User;
 import lombok.AllArgsConstructor;
@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseTemplateVO {
+public class UserDepartmentAssignmentVO {
     private User user;
     private Department department;
-
+    private Assignment assignment;
 }

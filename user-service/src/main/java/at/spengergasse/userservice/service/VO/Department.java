@@ -1,4 +1,4 @@
-package at.spengergasse.userservice.VO;
+package at.spengergasse.userservice.service.VO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

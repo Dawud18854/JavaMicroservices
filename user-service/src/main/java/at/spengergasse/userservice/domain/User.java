@@ -1,6 +1,7 @@
 package at.spengergasse.userservice.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -22,5 +24,6 @@ public class User {
     private String lastName;
     private String email;
     private Long departmentId;
+    private Long assignmentId;
 
 }

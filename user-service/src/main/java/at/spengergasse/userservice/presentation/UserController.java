@@ -1,12 +1,12 @@
 package at.spengergasse.userservice.presentation;
-import at.spengergasse.userservice.VO.ResponseTemplateVO;
+import at.spengergasse.userservice.service.VO.UserAssignmentVO;
+import at.spengergasse.userservice.service.VO.UserDepartmentAssignmentVO;
+import at.spengergasse.userservice.service.VO.UserDepartmentVO;
 import at.spengergasse.userservice.domain.User;
 import at.spengergasse.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -22,9 +22,31 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/{id}")
-    public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId){
-        log.info("Inside ResponseTemplateVO of UserController");
+    @PutMapping("/{id}/{firstName}/{lastName}")
+    public void updateSongField(@PathVariable Long id, @PathVariable String firstName, @PathVariable String lastName){
+        userService.partialUpdate(id,firstName,lastName);
+    }
+
+    @DeleteMapping({"/{id}"})
+    public void deleteMusic(@PathVariable Long id){
+        userService.deleteUser(id);
+    }
+
+    @GetMapping("/withAssignmentDepartment/{id}")
+    public UserDepartmentAssignmentVO getUserWithDepartmentAndAssignment(@PathVariable("id") Long userId){
+        log.info("Inside getUserWithAssignment of UserController");
+        return userService.getUserWithAssignmentAndDepartment(userId);
+    }
+
+    @GetMapping("/withAssignment/{id}")
+    public UserAssignmentVO getUserWithAssignment(@PathVariable("id") Long userId){
+        log.info("Inside getUserWithAssignment of UserController");
+        return userService.getUserWithAssignment(userId);
+    }
+
+    @GetMapping("/withDepartment/{id}")
+    public UserDepartmentVO getUserWithDepartment(@PathVariable("id") Long userId){
+        log.info("Inside getUserWithDepartment of UserController");
         return userService.getUserWithDepartment(userId);
     }
 
