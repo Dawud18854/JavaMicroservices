@@ -13,7 +13,7 @@ public class UserServiceApplication {
         SpringApplication.run(UserServiceApplication.class, args);
     }
 
-    //Frohe Nach Mitternacht
+    //Guten Morgen
     @Bean
     @LoadBalanced
      public RestTemplate restTemplate(){

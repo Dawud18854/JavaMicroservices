@@ -1,4 +1,4 @@
-package com.example.cloud;
+package at.spengergasse.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

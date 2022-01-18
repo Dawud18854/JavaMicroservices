@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUserId(Long userId);
 
-    void partialUpdate(Long id, String firstName, String lastName);
+    //void partialUpdate(Long id, String firstName, String lastName);
 }

@@ -27,7 +27,7 @@ public class UserController {
 
     @PutMapping("/{id}/{firstName}/{lastName}")
     public void updateSongField(@PathVariable Long id, @PathVariable String firstName, @PathVariable String lastName){
-        userService.partialUpdate(id,firstName,lastName);
+        userService.updateUser(id,firstName,lastName);
     }
 
     @DeleteMapping({"/{id}"})

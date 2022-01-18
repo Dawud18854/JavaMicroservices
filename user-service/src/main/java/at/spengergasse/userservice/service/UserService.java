@@ -40,17 +40,35 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void updateUser(Long id, String firstName, String lastName){
+        log.info("Inside updateUser of UserService");
+        if(userExists(id)){
+            User u = userRepository.findByUserId(id);
+            u.setFirstName(firstName);
+            u.setLastName(lastName);
+            userRepository.save(u);
+        }
+        else throw new ServiceException("User with id "+id+" does not exist");
+
+    }
+
+    public boolean userExists(Long id){
+        if(userRepository.findByUserId(id)!=null)
+            return true;
+        return false;
+    }
+
     public UserDto findUserById(Long id){
         log.info("Inside findUserById of UserService");
         return userRepository.findById(id)
                 .map(UserDto::fromUser)
                 .orElseThrow(()->
-                        new ServiceException("User with id "+id+"does not exist"));
+                        new ServiceException("User with id "+id+" does not exist"));
     }
 
-    public void partialUpdate(Long id, String firstName, String lastName){
-        userRepository.partialUpdate(id,firstName,lastName);
-    }
+    //public void partialUpdate(Long id, String firstName, String lastName){
+    //    userRepository.partialUpdate(id,firstName,lastName);
+    //}
 
     public void deleteUser(Long id) throws ServiceException {
         var user = findUserById(id);
