@@ -1,6 +1,6 @@
 package at.spengergasse.userservice.service;
 import at.spengergasse.userservice.domain.Exceptions.ServiceException;
-import at.spengergasse.userservice.service.DTO.UserDto;
+import at.spengergasse.userservice.service.DTOs.UserDto;
 import at.spengergasse.userservice.service.VO.*;
 import at.spengergasse.userservice.domain.User;
 import at.spengergasse.userservice.persistance.UserRepository;

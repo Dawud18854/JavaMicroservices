@@ -1,4 +1,4 @@
-package at.spengergasse.userservice.service.DTO;
+package at.spengergasse.userservice.service.DTOs;
 
 import at.spengergasse.userservice.domain.User;
 

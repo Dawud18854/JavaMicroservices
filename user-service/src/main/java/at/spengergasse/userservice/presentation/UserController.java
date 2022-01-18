@@ -1,5 +1,5 @@
 package at.spengergasse.userservice.presentation;
-import at.spengergasse.userservice.service.DTO.UserDto;
+import at.spengergasse.userservice.service.DTOs.UserDto;
 import at.spengergasse.userservice.service.VO.UserAssignmentVO;
 import at.spengergasse.userservice.service.VO.UserDepartmentAssignmentVO;
 import at.spengergasse.userservice.service.VO.UserDepartmentVO;
