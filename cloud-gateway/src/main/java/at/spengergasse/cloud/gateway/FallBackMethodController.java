@@ -17,4 +17,9 @@ public class FallBackMethodController {
         return "Department Service seems not to be working,⁄n please try again later" ;
     }
 
+    @GetMapping("/assignmentServiceFallBack")
+    public String assignmentServiceFallBackMethod(){
+        return "Department Service seems not to be working,⁄n please try again later" ;
+    }
+
 }
