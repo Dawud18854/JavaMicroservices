@@ -42,5 +42,9 @@ resilience4j:
           - java.io.IOException
           - java.net.ConnectException
     instances:
-      microservices:
+      department-service:
+        baseConfig: default
+      user-service:
+        baseConfig: default
+      assignment-service:
         baseConfig: default

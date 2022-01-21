@@ -5,6 +5,7 @@ import at.spengergasse.userservice.service.VO.UserDepartmentAssignmentVO;
 import at.spengergasse.userservice.service.VO.UserDepartmentVO;
 import at.spengergasse.userservice.domain.User;
 import at.spengergasse.userservice.service.UserService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private static final String USER_SERVICE = "user-service";
+
     @PostMapping("/")
+    @CircuitBreaker(name = USER_SERVICE)
     public User saveUser(@RequestBody User user){
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
