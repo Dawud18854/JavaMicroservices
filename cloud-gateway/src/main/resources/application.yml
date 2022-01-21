@@ -15,7 +15,11 @@ spring:
           uri: lb://DEPARTMENT-SERVICE
           predicates:
               - Path=/departments/**
+          filters:
+          - RewritePath=/departments(?<path>.*), /$\{path}
         - id: ASSIGNMENT-SERVICE
           uri: lb://ASSIGNMENT-SERVICE
           predicates:
             - Path=/assignments/**
+          filters:
+          - RewritePath=/assignments/(?<path>.*), /$\{path}
