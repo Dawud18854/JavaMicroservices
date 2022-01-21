@@ -2,8 +2,6 @@ server:
   port: 9191
 
 spring:
-  application:
-    name: API-GATEWAY
   cloud:
     gateway:
       routes:
@@ -12,10 +10,7 @@ spring:
           predicates:
             - Path=/users/**
           filters:
-            - name: CIRCUIT-BREAKER
-              args:
-                name: USER-CIRCUIT-BREAKER
-                fallbackUri: forward:/userServiceFallBack
+          - RewritePath=/users/(?<path>.*), /$\{path}
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:

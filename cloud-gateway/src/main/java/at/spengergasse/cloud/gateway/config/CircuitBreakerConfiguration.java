@@ -1,4 +1,4 @@
-package at.spengergasse.cloud.gateway;
+package at.spengergasse.cloud.gateway.config;
 
 import java.time.Duration;
 
