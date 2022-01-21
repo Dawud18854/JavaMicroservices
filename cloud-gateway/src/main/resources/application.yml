@@ -12,33 +12,15 @@ spring:
           predicates:
             - Path=/users/**
           filters:
-            - name: CircuitBreaker
+            - name: CIRCUIT-BREAKER
               args:
-                name: USER-SERVICE
-                fallbackuri: forward:/userServiceFallBack
+                name: USER-CIRCUIT-BREAKER
+                fallbackUri: forward:/userServiceFallBack
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:
               - Path=/departments/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: DEPARTMENT-SERVICE
-                fallbackuri: forward:/departmentServiceFallBack
         - id: ASSIGNMENT-SERVICE
           uri: lb://ASSIGNMENT-SERVICE
           predicates:
             - Path=/assignments/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: ASSIGNMENT-SERVICE
-                fallbackuri: forward:/assignmentServiceFallBack
-
-hystrix:
-  command:
-    fallbackcmd:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 4000
