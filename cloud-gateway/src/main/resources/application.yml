@@ -8,18 +8,39 @@ spring:
         - id: USER-SERVICE
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users/**
-          filters:
-          - RewritePath=/users/(?<path>.*), /$\{path}
+          - Path=/users/**
+          #filters:
+          #- RewritePath=/users/(?<path>.*), /$\{path}
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:
-              - Path=/departments/**
-          filters:
-          - RewritePath=/departments(?<path>.*), /$\{path}
+          - Path=/departments/**
+          #filters:
+          #- RewritePath=/departments(?<path>.*), /$\{path}
         - id: ASSIGNMENT-SERVICE
           uri: lb://ASSIGNMENT-SERVICE
           predicates:
-            - Path=/assignments/**
-          filters:
-          - RewritePath=/assignments/(?<path>.*), /$\{path}
+          - Path=/assignments/**
+          #filters:
+          #- RewritePath=/assignments/(?<path>.*), /$\{path}
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 20
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.util.concurrent.TimeoutException
+          - java.io.IOException
+          - java.net.ConnectException
+    instances:
+      microservices:
+        baseConfig: default
