@@ -13,3 +13,13 @@ implemented a circuit-breaker
 
 ###Architecture:
 ![architecture](architecture.png)
+
+
+
+##Zipkin
+start zipkin server with docker:
+
+```bash
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
