@@ -20,10 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private static final String USER_SERVICE = "user-service";
-
     @PostMapping("/")
-    @CircuitBreaker(name = USER_SERVICE)
     public User saveUser(@RequestBody User user){
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
