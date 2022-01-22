@@ -15,7 +15,6 @@ implemented a circuit-breaker
 ![architecture](architecture.png)
 
 
-
 ##Zipkin
 start zipkin server with docker:
 
