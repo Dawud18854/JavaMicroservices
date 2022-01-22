@@ -3,7 +3,7 @@
 
 For my coding class I had to make a spring-boot microservices project
 
-In this project I am implementing 3 functional services and one service,
+In this project I am implementing 3 functional services,
 in my case USER-SERVICE communicates with the other 2 services.
 Then I am implementing a service-registry and for all of them I am 
 getting their configuration through a cloud-config-server.
