@@ -50,6 +50,7 @@ public class UserController {
         return userService.getUserWithAssignmentAndDepartment(userId);
     }
 
+    @CircuitBreaker(name = USER_SERVICE, fallbackMethod = "http://localhost:9191/fallback/userServiceFallBack")
     @GetMapping("/withAssignment/{id}")
     public UserAssignmentVO getUserWithAssignment(@PathVariable("id") Long userId){
         log.info("Inside getUserWithAssignment of UserController");

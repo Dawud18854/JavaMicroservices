@@ -1,6 +1,15 @@
 server:
   port: 9191
 
+System.setProperty("spring.cloud.gateway.routes[0].id", "account-service");
+System.setProperty("spring.cloud.gateway.routes[0].uri", "http://192.168.99.100:" + mockServer.getServerPort());
+System.setProperty("spring.cloud.gateway.routes[0].predicates[0]", "Path=/account/**");
+System.setProperty("spring.cloud.gateway.routes[0].filters[0]", "RewritePath=/account/(?<path>.*), /$\\{path}");
+System.setProperty("spring.cloud.gateway.routes[0].filters[1].name", "CircuitBreaker");
+System.setProperty("spring.cloud.gateway.routes[0].filters[1].args.name", "exampleSlowCircuitBreaker");
+System.setProperty("spring.cloud.gateway.routes[0].filters[1].args.fallbackUri", "forward:/fallback/account");
+
+
 spring:
   cloud:
     gateway:
@@ -9,42 +18,43 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
           - Path=/users/**
-          #filters:
-          #- RewritePath=/users/(?<path>.*), /$\{path}
+          filters:
+          - RewritePath=/(?<path>.*), /$\{path}
+          fallbackuri: forward:/userServiceFallBack
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:
           - Path=/departments/**
-          #filters:
-          #- RewritePath=/departments(?<path>.*), /$\{path}
+          filters:
+          - RewritePath=/(?<path>.*), /$\{path}
         - id: ASSIGNMENT-SERVICE
           uri: lb://ASSIGNMENT-SERVICE
           predicates:
           - Path=/assignments/**
-          #filters:
-          #- RewritePath=/assignments/(?<path>.*), /$\{path}
+          filters:
+          - RewritePath=/(?<path>.*), /$\{path}
 
-resilience4j:
-  circuitbreaker:
-    configs:
-      default:
-        registerHealthIndicator: true
-        slidingWindowSize: 20
-        minimumNumberOfCalls: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
-        failureRateThreshold: 50
-        eventConsumerBufferSize: 10
-        recordExceptions:
-          - org.springframework.web.client.HttpServerErrorException
-          - java.util.concurrent.TimeoutException
-          - java.io.IOException
-          - java.net.ConnectException
-    instances:
-      department-service:
-        baseConfig: default
-      user-service:
-        baseConfig: default
-      assignment-service:
-        baseConfig: default
+#resilience4j:
+#  circuitbreaker:
+#    configs:
+#      default:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 20
+#        minimumNumberOfCalls: 5
+#        permittedNumberOfCallsInHalfOpenState: 3
+#        automaticTransitionFromOpenToHalfOpenEnabled: true
+#        waitDurationInOpenState: 5s
+#        failureRateThreshold: 50
+#        eventConsumerBufferSize: 10
+#        recordExceptions:
+#          - org.springframework.web.client.HttpServerErrorException
+#          - java.util.concurrent.TimeoutException
+#          - java.io.IOException
+#          - java.net.ConnectException
+#    instances:
+#      department-service:
+#        baseConfig: default
+#      user-service:
+#        baseConfig: default
+#      assignment-service:
+#        baseConfig: default
