@@ -20,10 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private static final String USER_SERVICE = "user-service";
-
     @PostMapping("/")
-    @CircuitBreaker(name = USER_SERVICE)
     public User saveUser(@RequestBody User user){
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
@@ -50,7 +47,6 @@ public class UserController {
         return userService.getUserWithAssignmentAndDepartment(userId);
     }
 
-    @CircuitBreaker(name = USER_SERVICE, fallbackMethod = "http://localhost:9191/fallback/userServiceFallBack")
     @GetMapping("/withAssignment/{id}")
     public UserAssignmentVO getUserWithAssignment(@PathVariable("id") Long userId){
         log.info("Inside getUserWithAssignment of UserController");
