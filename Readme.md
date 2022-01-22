@@ -23,3 +23,10 @@ start zipkin server with docker:
 docker run -d -p 9411:9411 openzipkin/zipkin
 ```
 
+open in browser :
+
+http://localhost:9411/zipkin/
+
+Use Postman and refresh zipkin then see your services:
+
+![img_1.png](zipkin.png)
