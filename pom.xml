@@ -13,9 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>hussein-java-microservices</name>
     <description>hussein-java-microservices</description>
+    <packaging>pom</packaging>
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <modules>
         <module>cloud-config-server</module>
         <module>department-user-manager</module>
@@ -24,6 +26,7 @@
         <module>assignment-service</module>
         <module>department-service</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
