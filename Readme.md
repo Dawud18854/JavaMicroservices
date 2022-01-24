@@ -54,4 +54,18 @@ Now using Grafana (Benefits):
 1. Much more customizable
 2. Better insight on application health
 
+Steps: 
+1. Start Grafana server.exe
+2. open on port 3000
+3. login 
+4. add datasource Prometheus
 
+![Add Data Source](GrafanaDataSource.png)
+
+Nice Overview with Grafana Dashboard
+
+![MemoryStatsDashboardFromGrafana](MemoryStatsGrafana.png)
+
+
+import fully functional dashboard through json form https://Grafana/dashbords/12900
+![Dashboard](Dashboard.png)
