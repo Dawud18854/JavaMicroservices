@@ -36,3 +36,22 @@ Use Postman and refresh zipkin then see your services:
 #Prometheus:
 simply said prometheus takes actuator information
 and makes our life easier by providing a nice GUI
+
+configure prometheus.yml to:
+
+![prometheus config](prometheusymlconfig.png)
+
+start server and open at port 9090
+
+example graph for memory consumption:
+
+![Memory stats](MemoryStats.png)
+
+
+
+Now using Grafana (Benefits):
+
+1. Much more customizable
+2. Better insight on application health
+
+
