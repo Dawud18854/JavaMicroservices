@@ -1,7 +1,7 @@
 # Microservice-Project
 ##by Dawud Hussein
 
-For my coding class I had to make a spring-boot microservices project
+For my coding class I had to make a spring-boot microservices project (BitbucketPipeline included)
 
 In this project I am implementing 3 functional services,
 in my case USER-SERVICE communicates with the other 2 services.
