@@ -12,6 +12,7 @@ implemented a circuit-breaker
 
 
 ###Architecture:
+
 ![architecture](architecture.png)
 
 
@@ -34,6 +35,7 @@ Use Postman and refresh zipkin then see your services:
 
 ##Adding Monitoring through Prometheus
 #Prometheus:
+
 simply said prometheus takes actuator information
 and makes our life easier by providing a nice GUI
 
